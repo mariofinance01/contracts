@@ -648,7 +648,7 @@ contract MarioGenesisRewardPool {
         uint256 _lastRewardTime,
         uint256 _depositFeeBP
     ) public onlyOperator {
-        require(_depositFeeBP <= 10000, "add: invalid deposit fee basis points");
+        require(_depositFeeBP <= 100, "add: invalid deposit fee basis points");
         checkPoolDuplicate(_token);
         if (_withUpdate) {
             massUpdatePools();
@@ -686,7 +686,7 @@ contract MarioGenesisRewardPool {
 
     // Update the given pool's MARIO allocation point. Can only be called by the owner.
     function set(uint256 _pid, uint256 _allocPoint, uint256 _depositFeeBP) public onlyOperator {
-        require(_depositFeeBP <= 10000, "set: invalid deposit fee basis points");
+        require(_depositFeeBP <= 100, "set: invalid deposit fee basis points");
         massUpdatePools();
         PoolInfo storage pool = poolInfo[_pid];
         if (pool.isStarted) {
